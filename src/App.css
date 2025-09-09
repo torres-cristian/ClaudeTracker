@@ -1,3 +1,4 @@
+/* --- General Body and Root --- */
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background-color: #f0f2f5;
@@ -6,22 +7,115 @@ body {
 }
 
 #root {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
+  margin: 0;
+  max-width: 100vw;
 }
 
-h1, h2, h3 {
-  color: #050505;
+/* --- Login Page --- */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.app-header {
+.login-container {
+  background-color: #fff;
+  padding: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   text-align: center;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 1rem;
 }
 
+.google-signin-btn {
+  background-color: #4285F4;
+  color: white;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+}
+
+.google-signin-btn:hover {
+  background-color: #357ae8;
+}
+
+/* --- Dashboard Layout --- */
+.dashboard-layout {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background-color: #ffffff;
+  border-right: 1px solid #ddd;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes user-info to the bottom */
+}
+
+.sidebar-header {
+  font-size: 1.5rem;
+  color: #1877f2;
+  margin: 0 0 2rem 0;
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li a {
+  display: block;
+  padding: 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #050505;
+  font-weight: 600;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.sidebar ul li a:hover {
+  background-color: #f0f2f5;
+}
+
+.sidebar ul li a.active {
+  background-color: #1877f2;
+  color: white;
+}
+
+.user-info {
+  border-top: 1px solid #ddd;
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.user-info p {
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.logout-btn {
+  background-color: #e4e6eb;
+  color: #050505;
+  width: 100%;
+}
+
+.logout-btn:hover {
+  background-color: #d8dadf;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* --- Reusable Container --- */
 .container {
   background-color: #fff;
   padding: 2rem;
@@ -30,6 +124,7 @@ h1, h2, h3 {
   margin-bottom: 1rem;
 }
 
+/* --- Forms --- */
 .form-group {
   margin-bottom: 1rem;
 }
@@ -42,12 +137,13 @@ h1, h2, h3 {
 
 .form-group input {
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.75rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
   box-sizing: border-box;
 }
 
+/* --- Buttons --- */
 button {
   background-color: #1877f2;
   color: white;
@@ -58,7 +154,7 @@ button {
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s;
-  margin-right: 0.5rem; /* Add some space between buttons */
+  margin-right: 0.5rem;
 }
 
 button:hover {
@@ -71,17 +167,42 @@ button:disabled {
   cursor: not-allowed;
 }
 
-.account-list ul {
+.toggle-sessions {
+  background-color: #e4e6eb;
+  color: #050505;
+}
+
+.toggle-sessions:hover {
+  background-color: #d8dadf;
+}
+
+.delete-session-btn {
+    background-color: #fa383e;
+    color: white;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.8rem;
+}
+
+.delete-session-btn:hover {
+    background-color: #e12d32;
+}
+
+/* --- Account List / Cards --- */
+.account-list {
   list-style: none;
   padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
 }
 
 .account-item {
-  padding: 1.5rem;
+  background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  margin-bottom: 1.5rem;
   transition: box-shadow 0.2s, border-color 0.2s;
+  display: flex;
+  flex-direction: column;
 }
 
 .account-item:hover {
@@ -89,42 +210,46 @@ button:disabled {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+
+.card-actions {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  border-top: 1px solid #f0f2f5;
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+/* --- Session Details --- */
 .session-counter {
-    background-color: #f0f2f5;
-    border-radius: 6px;
-    padding: 1rem;
-    margin: 1rem 0;
-    text-align: center;
+  background-color: #f0f2f5;
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 1rem 0;
+  text-align: center;
 }
 
 .progress-bar-container {
-    background-color: #e0e0e0;
-    border-radius: 4px;
-    height: 8px;
-    width: 100%;
-    margin: 0.5rem 0;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  height: 8px;
+  width: 100%;
+  margin: 0.5rem 0;
 }
 
 .progress-bar {
-    background-color: #1877f2;
-    height: 100%;
-    border-radius: 4px;
-    transition: width 0.5s ease-in-out;
-}
-
-.toggle-sessions {
-    background-color: #e4e6eb;
-    color: #050505;
-}
-
-.toggle-sessions:hover {
-    background-color: #d8dadf;
+  background-color: #1877f2;
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease-in-out;
 }
 
 .session-list {
-    margin-top: 1rem;
-    border-top: 1px solid #ddd;
-    padding-top: 1rem;
+  margin-top: 1rem;
 }
 
 .session-list ul {
@@ -135,11 +260,14 @@ button:disabled {
 }
 
 .session-item {
-  background-color: #f0f2f5;
+  background-color: #f7f7f7;
   padding: 0.75rem 1rem;
   border-radius: 4px;
   margin-bottom: 0.5rem;
   font-family: monospace;
   font-size: 0.9rem;
   border-left: 3px solid #1877f2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
